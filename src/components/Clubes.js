@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { obtenerClubes } from "../api/api"
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { VerClub, EditarClub, BorrarClub, AgregarEquipo } from "./Botones";
 
 const Clubes = () => {
   const [datos, setDatos] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const prueba = async () => {
@@ -15,7 +17,8 @@ const Clubes = () => {
 
   return (
     <section>
-      {<table>
+      <button onClick={()=>{AgregarEquipo(navigate)}}>Agregar nuevo equipo</button>
+      <table>
         <tbody>
           <tr>
             <th>Equipo</th>
@@ -27,14 +30,14 @@ const Clubes = () => {
               <td>{equipo.name}</td>
               <td>{equipo.area.name}</td>
               <td>
-                <NavLink to={`/equipo/${equipo.id}/ver`}>Ver</NavLink>
-                <NavLink to={`/equipo/${equipo.id}/editar`}>Editar</NavLink>
-                <NavLink to={`/equipo/${equipo.id}/borrar`}>Borrar</NavLink>
+                <button onClick={()=>{VerClub(equipo.id, navigate)}} >Ver</button>
+                <button onClick={()=>{EditarClub(equipo.id, navigate)}}>Editar</button>
+                <button onClick={()=>{BorrarClub(equipo.id, equipo.name)}}>Borrar</button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>}
+      </table>
     </section>
   )
 }

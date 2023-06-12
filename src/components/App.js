@@ -11,9 +11,9 @@ function App() {
       </header>
           <Routes>
             <Route exact path="/" element={<Clubes/>}/>
+            <Route exact path="/equipo/agregar" element={<div>agregar</div>}/>
             <Route exact path="/equipo/:id/ver" element={<VerEquipo/>}/>
             <Route exact path="/equipo/:id/editar" element={<div>editar</div>}/>
-            <Route exact path="/equipo/:id/borrar" element={<div>borrar</div>}/>
           </Routes>
       </Router>
     </section>
