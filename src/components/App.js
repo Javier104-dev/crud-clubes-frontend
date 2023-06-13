@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Clubes from "./Clubes";
-import { VerEquipo } from "./VerEquipo";
+import { VerClub } from "./VerClub";
 import { AgregarClub } from "./AgregarClub";
+import { EditarClub } from "./EditarClub";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Clubes/>}/>
             <Route exact path="/equipo/agregar" element={<AgregarClub/>}/>
-            <Route exact path="/equipo/:id/ver" element={<VerEquipo/>}/>
-            <Route exact path="/equipo/:id/editar" element={<div>editar</div>}/>
+            <Route exact path="/equipo/:id/ver" element={<VerClub/>}/>
+            <Route exact path="/equipo/:id/editar" element={<EditarClub/>}/>
           </Routes>
       </Router>
     </section>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { verClubSeleccionado } from "../api/api";
 import { NavLink, useParams } from "react-router-dom";
 
-const VerEquipo = () => {
+const VerClub = () => {
   const { id } = useParams();
   const [equipo, setEquipo] = useState({});
 
@@ -10,8 +10,8 @@ const VerEquipo = () => {
     const datos = async () => {
       const equipo = await verClubSeleccionado(id);
       setEquipo(equipo)
-  }
-  datos()
+    }
+    datos()
   }, [id])
 
   return (
@@ -26,6 +26,10 @@ const VerEquipo = () => {
             <tr>
               <th>Informacion</th>
               <th>valor</th>
+            </tr>
+            <tr>
+              <td>Pais</td>
+              <td>{equipo.area?.name}</td>
             </tr>
             <tr>
               <td>Nombre</td>
@@ -55,5 +59,5 @@ const VerEquipo = () => {
 }
 
 export {
-  VerEquipo
+  VerClub
 }

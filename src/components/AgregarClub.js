@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const AgregarClub = () => {
   const [datosClub, setDatosClub] = useState({
-    nombre: "",
-    club: "",
-    ano: "",
-    ciudad: "",
-    miembros: 0
+    pais: "",
+    name: "",
+    address: "",
+    website: "",
+    clubColors: "",
+    phone: 0
   });
 
   const setAtributos = (evento) => {
@@ -28,20 +29,54 @@ const AgregarClub = () => {
     <form onSubmit={prueba}>
       <h1>Agregar un Club</h1>
 
+      <label htmlFor="nombre">Pais</label>
+      <input
+        name="pais"
+        id="nombre"
+        value={datosClub.pais}
+        onChange={setAtributos}
+      />
+
       <label htmlFor="nombre">Nombre</label>
-      <input name="nombre" id="nombre" value={datosClub.nombre} onChange={setAtributos}></input>
+      <input
+        name="name"
+        id="nombre"
+        value={datosClub.name}
+        onChange={setAtributos}
+      />
 
-      <label htmlFor="club">Club</label>
-      <input name="club" id="club" value={datosClub.club} onChange={setAtributos}></input>
+      <label htmlFor="club">Direccion</label>
+      <input
+        name="address"
+        id="club"
+        value={datosClub.address}
+        onChange={setAtributos}
+      />
 
-      <label htmlFor="ano">Año</label>
-      <input name="ano" type="date" id="ano" value={datosClub.ano} onChange={setAtributos}></input>
+      <label htmlFor="ano">Website</label>
+      <input
+        name="website"
+        id="ano"
+        value={datosClub.website}
+        onChange={setAtributos}
+      />
 
-      <label htmlFor="ciudad">Ciudad</label>
-      <input name="ciudad" id="ciudad" value={datosClub.ciudad} onChange={setAtributos}></input>
+      <label htmlFor="ciudad">Colores del Club</label>
+      <input
+        name="clubColors"
+        id="ciudad"
+        value={datosClub.clubColors}
+        onChange={setAtributos}
+      />
 
-      <label htmlFor="miembros">Miembros</label>
-      <input name="miembros" type="number" id="miembros" value={datosClub.miembros} onChange={setAtributos}></input>
+      <label htmlFor="miembros">Numero</label>
+      <input 
+        name="phone"
+        type="number"
+        id="miembros"
+        value={datosClub.phone}
+        onChange={setAtributos}
+      />
 
       <div>
         <button type="submit">Enviar</button>
@@ -53,8 +88,3 @@ const AgregarClub = () => {
 export {
   AgregarClub
 }
-// nombre,
-// club,
-// ano,
-// ciudad,
-// miembros,
