@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Clubes from "./Clubes";
 import { VerEquipo } from "./VerEquipo";
+import { AgregarClub } from "./AgregarClub";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       </header>
           <Routes>
             <Route exact path="/" element={<Clubes/>}/>
-            <Route exact path="/equipo/agregar" element={<div>agregar</div>}/>
+            <Route exact path="/equipo/agregar" element={<AgregarClub/>}/>
             <Route exact path="/equipo/:id/ver" element={<VerEquipo/>}/>
             <Route exact path="/equipo/:id/editar" element={<div>editar</div>}/>
           </Routes>

@@ -15,8 +15,19 @@ const borrarClub = async (id) => {
   return respuesta;
 }
 
+const agregarClub = async (body) => {
+  await fetch(`${BASE}/club/agregar`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+}
+
 export {
   obtenerClubes,
   verClubSeleccionado,
   borrarClub,
+  agregarClub
 }

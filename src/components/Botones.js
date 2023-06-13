@@ -1,28 +1,21 @@
 import { borrarClub } from "../api/api";
 
-const VerClub = (id, navigate) => {
-  navigate(`/equipo/${id}/ver`);
+const Boton = (props) => {
+  return (
+    <button onClick={props.funcion}>{props.children}</button>
+  )
 }
 
-const EditarClub = (id, navigate) => {
-  navigate(`/equipo/${id}/editar`);
-}
-
-const BorrarClub = async (id, nombre) => {
+const BorrarClub = async (id, nombre, datos, setDatos) => {
   if (window.confirm('Deseas eliminar este equipo?')) {
     await borrarClub(id);
-    window.location.reload();
+    const nuevosDatos = datos.filter(equipo => equipo.id !== id);
+    setDatos(nuevosDatos);
     window.alert(`Club ${nombre} eliminado con exito`)
   }
 }
 
-const AgregarEquipo = (navigate) => {
-  navigate('equipo/agregar');
-}
-
 export {
-  VerClub,
-  EditarClub,
   BorrarClub,
-  AgregarEquipo
+  Boton
 }
