@@ -1,79 +1,78 @@
 import { useState } from "react"
-import { agregarClub } from "../api/api"
 import { useNavigate } from "react-router-dom";
+import { agregarNuevoClub } from "./Botones";
 
 const AgregarClub = () => {
+  const navigate = useNavigate();
   const [datosClub, setDatosClub] = useState({
     pais: "",
     name: "",
     address: "",
     website: "",
     clubColors: "",
-    phone: 0
+    phone: ""
   });
 
-  const setAtributos = (evento) => {
-    const { name, value } = evento.target;
-    setDatosClub({...datosClub, [name]: value});
+  const setAtributos = (e) => {
+    setDatosClub({
+      ...datosClub,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const navigate = useNavigate();
-
-  const prueba = async (evento) => {
+  const onSubmitAgregar = async (evento) => {
     evento.preventDefault();
-    await agregarClub(datosClub);
-    navigate(-1);
+    await agregarNuevoClub(datosClub, navigate)
   }
 
   return (
-    <form onSubmit={prueba}>
+    <form onSubmit={onSubmitAgregar}>
       <h1>Agregar un Club</h1>
 
-      <label htmlFor="nombre">Pais</label>
+      <label htmlFor="pais">Pais</label>
       <input
+        id="pais"
         name="pais"
-        id="nombre"
         value={datosClub.pais}
         onChange={setAtributos}
       />
 
       <label htmlFor="nombre">Nombre</label>
       <input
-        name="name"
         id="nombre"
+        name="name"
         value={datosClub.name}
         onChange={setAtributos}
       />
 
-      <label htmlFor="club">Direccion</label>
+      <label htmlFor="direccion">Direccion</label>
       <input
+        id="direccion"
         name="address"
-        id="club"
         value={datosClub.address}
         onChange={setAtributos}
       />
 
-      <label htmlFor="ano">Website</label>
+      <label htmlFor="pagina">Website</label>
       <input
+        id="pagina"
         name="website"
-        id="ano"
         value={datosClub.website}
         onChange={setAtributos}
       />
 
-      <label htmlFor="ciudad">Colores del Club</label>
+      <label htmlFor="colores">Colores del Club</label>
       <input
+        id="colores"
         name="clubColors"
-        id="ciudad"
         value={datosClub.clubColors}
         onChange={setAtributos}
       />
 
-      <label htmlFor="miembros">Numero</label>
+      <label htmlFor="numero">Numero</label>
       <input 
+        id="numero"
         name="phone"
-        type="number"
-        id="miembros"
         value={datosClub.phone}
         onChange={setAtributos}
       />

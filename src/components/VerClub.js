@@ -1,26 +1,21 @@
-import { useEffect, useState } from "react"
 import { verClubSeleccionado } from "../api/api";
 import { NavLink, useParams } from "react-router-dom";
+import { useObtenerDatos } from "../hook/useObtenerDatos";
+import Cargando from "./Cargando"
 
 const VerClub = () => {
   const { id } = useParams();
-  const [equipo, setEquipo] = useState({});
-
-  useEffect(()=>{
-    const datos = async () => {
-      const equipo = await verClubSeleccionado(id);
-      setEquipo(equipo)
-    }
-    datos()
-  }, [id])
+  const { cargando, datos, error } = useObtenerDatos(verClubSeleccionado, id);
 
   return (
     <section>
-      <div>
-        <img></img>
-        <span>{equipo.name}</span>
-      </div>
-      <div>
+      {cargando && <Cargando/>}
+      {datos && (
+        <>
+        <div>
+          <img src={datos.crestUrl} alt={datos.name}></img>
+          <span>{datos.name}</span>
+        </div>
         <table>
           <tbody>
             <tr>
@@ -29,31 +24,33 @@ const VerClub = () => {
             </tr>
             <tr>
               <td>Pais</td>
-              <td>{equipo.area?.name}</td>
+              <td>{datos.area.name}</td>
             </tr>
             <tr>
               <td>Nombre</td>
-              <td>{equipo.name}</td>
+              <td>{datos.name}</td>
             </tr>
             <tr>
               <td>Direccion</td>
-              <td>{equipo.address}</td>
+              <td>{datos.address}</td>
             </tr>
             <tr>
               <td>pagina</td>
-              <td><NavLink to={equipo.website}>{equipo.website}</NavLink></td>
+              <td><NavLink to={datos.website}>{datos.website}</NavLink></td>
             </tr>
             <tr>
               <td>Colores del club</td>
-              <td>{equipo.clubColors}</td>
+              <td>{datos.clubColors}</td>
             </tr>
             <tr>
               <td>numero</td>
-              <td>{equipo.phone}</td>
+              <td>{datos.phone}</td>
             </tr>
           </tbody>
         </table>
-      </div>
+        </>
+      )}
+      {error && <div>{error}</div>}
     </section>
   )
 }

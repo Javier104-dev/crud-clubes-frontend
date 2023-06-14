@@ -1,43 +1,48 @@
 import { useEffect, useState } from "react"
 import { obtenerClubes } from "../api/api"
 import { useNavigate } from "react-router-dom";
-import { Boton, BorrarClub } from "./Botones";
+import { BorrarClub } from "./Botones";
+import { useObtenerDatos } from "../hook/useObtenerDatos";
+import Cargando from "./Cargando";
 
 const Clubes = () => {
-  const [datos, setDatos] = useState([]);
+  const [clubes, setClubes] = useState([]);
+  const { cargando, datos, error } = useObtenerDatos(obtenerClubes);
   const navigate = useNavigate();
-
+  
   useEffect(() => {
-    const prueba = async () => {
-      const datos = await obtenerClubes()
-      setDatos(datos);
+    if (datos) {
+      setClubes(datos);
     }
-    prueba();
-  }, [])
-
+  }, [datos]);
+  
   return (
     <section>
-      <Boton funcion={()=>{navigate(`/equipo/agregar`)}}>Agregar un equipo</Boton>
-      <table>
+      {cargando && <Cargando/> }
+      <button onClick={()=>{navigate(`/equipo/agregar`)}}>Agregar un equipo</button>
+      {datos && (
+        <table>
         <tbody>
           <tr>
             <th>Equipo</th>
             <th>Pais</th>
             <th>Opciones</th>
           </tr>
-          {datos.map((equipo)=>(
+          {clubes.map((equipo)=>(
             <tr key={equipo.id}>
               <td>{equipo.name}</td>
               <td>{equipo.area.name}</td>
               <td>
-                <Boton funcion={()=>{navigate(`/equipo/${equipo.id}/ver`)}}>Ver</Boton>
-                <Boton funcion={()=>{navigate(`/equipo/${equipo.id}/editar`)}}>Editar</Boton>
-                <Boton funcion={()=>{BorrarClub(equipo.id, equipo.name, datos, setDatos)}}>Borrar</Boton>
+                <button onClick={()=>{navigate(`/equipo/${equipo.id}/ver`)}}>Ver</button>
+                <button onClick={()=>{navigate(`/equipo/${equipo.id}/editar`)}}>Editar</button>
+                <button onClick={()=>{BorrarClub(equipo.id, equipo.name, clubes, setClubes)}}>Borrar</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      )}
+      {error && <div>{error}</div>}
     </section>
   )
 }

@@ -1,9 +1,25 @@
-import { borrarClub } from "../api/api";
+import { agregarClub, borrarClub, editarClub } from "../api/api";
 
-const Boton = (props) => {
-  return (
-    <button onClick={props.funcion}>{props.children}</button>
-  )
+const agregarNuevoClub = async (body, navigate) => {
+  try {
+    await agregarClub(body);
+    window.alert("Club agregado con exito");
+    navigate(-1);
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const modificarClub = async (id, body, navigate) => {
+  try {
+    await editarClub(id, body);
+    window.alert("exito al editar")
+    navigate(-1);
+
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 const BorrarClub = async (id, nombre, datos, setDatos) => {
@@ -17,5 +33,6 @@ const BorrarClub = async (id, nombre, datos, setDatos) => {
 
 export {
   BorrarClub,
-  Boton
+  agregarNuevoClub,
+  modificarClub
 }
