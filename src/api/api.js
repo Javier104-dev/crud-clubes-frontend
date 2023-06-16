@@ -28,12 +28,16 @@ const borrarClub = async (id) => {
 }
 
 const agregarClub = async (body) => {
+
+  const formData = new FormData();
+  
+  Object.entries(body).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+  
   const respuesta = await fetch(`${BASE}/club/agregar`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(body)
+    body: formData
   });
 
   if (!respuesta.ok) {

@@ -4,19 +4,22 @@ import { agregarNuevoClub } from "./Botones";
 
 const AgregarClub = () => {
   const navigate = useNavigate();
+
   const [datosClub, setDatosClub] = useState({
     pais: "",
     name: "",
     address: "",
     website: "",
     clubColors: "",
-    phone: ""
+    phone: "",
+    imagen: null
   });
 
   const setAtributos = (e) => {
+    const {name, value, files} = e.target;
     setDatosClub({
       ...datosClub,
-      [e.target.name]: e.target.value
+      [name] : files ? files[0] : value
     });
   };
 
@@ -28,6 +31,14 @@ const AgregarClub = () => {
   return (
     <form onSubmit={onSubmitAgregar}>
       <h1>Agregar un Club</h1>
+
+      <label htmlFor="imagen">Imagen</label>
+      <input
+        id="imagen"
+        type="file"
+        name="imagen"
+        onChange={setAtributos}
+      />
 
       <label htmlFor="pais">Pais</label>
       <input
