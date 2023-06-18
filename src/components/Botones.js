@@ -15,7 +15,7 @@ const modificarClub = async (id, body, navigate) => {
   try {
     await editarClub(id, body);
     window.alert("exito al editar")
-    navigate(-1);
+    navigate(`/equipo/${id}/ver`);
 
   } catch (error) {
     console.error(error);
