@@ -45,13 +45,17 @@ const agregarClub = async (body) => {
   }
 }
 
-const editarClub = async (id, bodys) => {
+const editarClub = async (id, body) => {
+
+  const formData = new FormData();
+  
+  Object.entries(body).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+  
   const respuesta = await fetch(`${BASE}/club/${id}/editar`, {
     method: "PATCH",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(bodys)
+    body: formData
   });
 
   if (!respuesta.ok) {

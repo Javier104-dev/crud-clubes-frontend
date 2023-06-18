@@ -17,6 +17,7 @@ const EditarClub = () => {
     website: "",
     clubColors: "",
     phone: "",
+    escudo: null
   });
 
   useEffect(() => {
@@ -27,15 +28,16 @@ const EditarClub = () => {
         address: datos.address,
         website: datos.website,
         clubColors: datos.clubColors,
-        phone: datos.phone || ""
+        phone: datos.phone
       });
     }
   }, [datos]);
 
   const setAtributos = (e) => {
+    const {value, name, files} = e.target;
     setClub({
       ...club,
-      [e.target.name]: e.target.value
+      [name]: files ? files[0] : value
     })
   }
 
@@ -50,9 +52,17 @@ const EditarClub = () => {
   {datos && (
     <form onSubmit={onSubmitEditar}>
     <div>
-      <img></img>
+      <img src={datos.escudo} alt={datos.name}></img>
       <span>{datos.name}</span>
     </div>
+
+    <label htmlFor="escudo">Imagen</label>
+      <input
+        id="escudo"
+        type="file"
+        name="escudo"
+        onChange={setAtributos}
+      />
 
     <label htmlFor="pais">Pais</label>
     <input

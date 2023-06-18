@@ -13,7 +13,7 @@ const VerClub = () => {
       {datos && (
         <>
         <div>
-          <img src={datos.crestUrl} alt={datos.name}></img>
+          <img src={datos.escudo} alt={datos.name}></img>
           <span>{datos.name}</span>
         </div>
         <table>

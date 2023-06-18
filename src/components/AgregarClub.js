@@ -12,7 +12,7 @@ const AgregarClub = () => {
     website: "",
     clubColors: "",
     phone: "",
-    imagen: null
+    escudo: null,
   });
 
   const setAtributos = (e) => {
@@ -32,11 +32,11 @@ const AgregarClub = () => {
     <form onSubmit={onSubmitAgregar}>
       <h1>Agregar un Club</h1>
 
-      <label htmlFor="imagen">Imagen</label>
+      <label htmlFor="escudo">Imagen</label>
       <input
-        id="imagen"
+        id="escudo"
         type="file"
-        name="imagen"
+        name="escudo"
         onChange={setAtributos}
       />
 
