@@ -1,0 +1,11 @@
+.container {
+  padding-left: calc((100% - 900px)/2);;
+  padding-right: calc((100% - 900px)/2);
+  min-height: 120vh;
+}
+
+.boton {
+  box-sizing: border-box;
+  padding: 0.3rem 1.1rem 0.3rem 1.1rem;
+  cursor: pointer;
+}

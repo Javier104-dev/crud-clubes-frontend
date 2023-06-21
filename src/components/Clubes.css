@@ -1,0 +1,33 @@
+.clubes__registros{
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.clubes__tabla {
+  max-width: 900px;
+  width: 100%;
+}
+
+.estilos__tabla {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 1rem;
+  padding-left: 0.4rem;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.clubes__tabla_encabezado {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.clubes__tabla_registros {
+  font-size: 1.1rem;
+}
+
+.clubes__tabla_registros:nth-child(even) {
+  background-color: #dddddd;
+}

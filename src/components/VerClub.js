@@ -2,54 +2,55 @@ import { verClubSeleccionado } from "../api/api";
 import { NavLink, useParams } from "react-router-dom";
 import { useObtenerDatos } from "../hook/useObtenerDatos";
 import Cargando from "./Cargando"
+import "./VerClub.css"
 
 const VerClub = () => {
   const { id } = useParams();
   const { cargando, datos, error } = useObtenerDatos(verClubSeleccionado, id);
 
   return (
-    <section>
+    <section className="club">
       {cargando && <Cargando/>}
-      {datos && (
+      {datos &&
         <>
-        <div>
-          <img src={datos.escudo} alt={datos.name}></img>
-          <span>{datos.name}</span>
+        <div className="club__escudo">
+          <img className="club__escudo__imagen" src={datos.escudo} alt={datos.name}></img>
+          <span className="club__escudo__nombre">{datos.name}</span>
         </div>
-        <table>
+        <table className="club__tabla estilos__tabla__club">
           <tbody>
-            <tr>
-              <th>Informacion</th>
-              <th>valor</th>
+            <tr className="club__tabla_encabezado">
+              <th className="estilos__tabla__club">Informacion</th>
+              <th className="estilos__tabla__club">Valor</th>
             </tr>
-            <tr>
-              <td>Pais</td>
-              <td>{datos.area.name}</td>
+            <tr className="club__tabla__registros">
+              <td className="estilos__tabla__club">Pais</td>
+              <td className="estilos__tabla__club">{datos.area.name}</td>
             </tr>
-            <tr>
-              <td>Nombre</td>
-              <td>{datos.name}</td>
+            <tr className="club__tabla__registros">
+              <td className="estilos__tabla__club">Nombre</td>
+              <td className="estilos__tabla__club">{datos.name}</td>
             </tr>
-            <tr>
-              <td>Direccion</td>
-              <td>{datos.address}</td>
+            <tr className="club__tabla__registros">
+              <td className="estilos__tabla__club">Direccion</td>
+              <td className="estilos__tabla__club">{datos.address}</td>
             </tr>
-            <tr>
-              <td>pagina</td>
-              <td><NavLink to={datos.website}>{datos.website}</NavLink></td>
+            <tr className="club__tabla__registros">
+              <td className="estilos__tabla__club">Pagina web</td>
+              <td className="estilos__tabla__club"><NavLink to={datos.website}>{datos.website}</NavLink></td>
             </tr>
-            <tr>
-              <td>Colores del club</td>
-              <td>{datos.clubColors}</td>
+            <tr className="club__tabla__registros">
+              <td className="estilos__tabla__club">Colores del club</td>
+              <td className="estilos__tabla__club">{datos.clubColors}</td>
             </tr>
-            <tr>
-              <td>numero</td>
-              <td>{datos.phone}</td>
+            <tr className="club__tabla__registros">
+              <td className="estilos__tabla__club">Telefono</td>
+              <td className="estilos__tabla__club">{datos.phone}</td>
             </tr>
           </tbody>
         </table>
         </>
-      )}
+      }
       {error && <div>{error}</div>}
     </section>
   )

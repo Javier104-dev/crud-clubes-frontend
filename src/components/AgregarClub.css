@@ -1,0 +1,23 @@
+.club__agregar {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.club__agregar__titulo {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.club__agregar__formulario {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  width: 400px;
+}
+
+.club__agregar__input {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}

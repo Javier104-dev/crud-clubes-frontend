@@ -1,0 +1,49 @@
+.club {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.club__escudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.club__escudo__imagen {
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+}
+
+.club__escudo__nombre {
+  font-size: 2rem;
+  margin: 1rem 0 2rem 0;
+  font-weight: bold;
+}
+
+.club__tabla {
+  width: 600px;
+}
+
+.estilos__tabla__club {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 1rem;
+  padding-left: 0.4rem;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.club__tabla_encabezado {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.club__tabla__registros {
+  font-size: 1.1rem;
+}
+
+.club__tabla__registros:nth-child(even) {
+  background-color: #dddddd;
+}

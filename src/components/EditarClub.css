@@ -1,0 +1,35 @@
+.club__editar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.club__editar__escudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.club__editar__escudo__imagen {
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+}
+
+.club__editar__escudo__nombre {
+  font-size: 1.8rem;
+  margin: 1rem 0 2rem 0;
+  font-weight: bold;
+}
+
+.club__editar__formulario {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  width: 400px;
+}
+
+.club__editar__input {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
