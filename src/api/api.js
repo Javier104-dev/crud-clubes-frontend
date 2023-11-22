@@ -1,7 +1,7 @@
-const BASE = "http://127.0.0.1:8080";
+const BASE = "http://127.0.0.1:8080/clubes";
 
 const obtenerClubes = async () => {
-  const respuesta = await fetch(`${BASE}/clubes`);
+  const respuesta = await fetch(BASE);
   if (!respuesta.ok) {
     throw new Error('API Error');
   }
@@ -10,7 +10,7 @@ const obtenerClubes = async () => {
 }
 
 const verClubSeleccionado = async (id) => {
-  const respuesta = await fetch(`${BASE}/club/${id}/ver`);
+  const respuesta = await fetch(`${BASE}/${id}`);
   if (!respuesta.ok) {
     throw new Error('API Error');
   }
@@ -19,7 +19,7 @@ const verClubSeleccionado = async (id) => {
 }
 
 const borrarClub = async (id) => {
-  const respuesta = await fetch(`${BASE}/club/${id}/eliminar`, {method: 'DELETE'});
+  const respuesta = await fetch(`${BASE}/${id}`, {method: 'DELETE'});
   if (!respuesta.ok) {
     throw new Error('API Error');
   }
@@ -35,7 +35,7 @@ const agregarClub = async (body) => {
     formData.append(key, value);
   });
   
-  const respuesta = await fetch(`${BASE}/club/agregar`, {
+  const respuesta = await fetch(BASE, {
     method: "POST",
     body: formData
   });
@@ -52,9 +52,9 @@ const editarClub = async (id, body) => {
   Object.entries(body).forEach(([key, value]) => {
     formData.append(key, value);
   });
-  
-  const respuesta = await fetch(`${BASE}/club/${id}/editar`, {
-    method: "PATCH",
+
+  const respuesta = await fetch(`${BASE}/${id}`, {
+    method: "PUT",
     body: formData
   });
 
